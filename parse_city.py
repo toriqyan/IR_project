@@ -3,9 +3,8 @@ import json
 city_name = 'San Francisco'
 city_initial = 'SF'
 
-json_data = open('dataset/business.json')
-restaurants = json.loads(json_data)
-json_data.close()
+with open('dataset/business.json') as json_data:
+	restaurants = json.loads(json_data)
 print(len(restaurants))
 
 json_data = open('dataset/review.json')
