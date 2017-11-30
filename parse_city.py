@@ -1,16 +1,21 @@
-import json
+import simplejson as json
 
 city_name = 'San Francisco'
 city_initial = 'SF'
 
-json_data = open('dataset/business.json', "r").read()
-restaurants = json.loads(json_data)
-json_data.close()
+restaurants = []
+reviews = []
+with open('dataset/business.json') as fin:
+	for line in fin:
+		line_contents = json.loads(line)
+		restaurants.append(line_contents)
 print(len(restaurants))
 
-json_data = open('dataset/review.json')
-reviews = json.loads(json_data)
-json_data.close()
+with open('dataset/review.json') as fin:
+	for line in fin:
+		line_contents = json.loads(line)
+		reviews.append(line_contents)
+
 print(len(reviews))
 
 target_restaurants = []
